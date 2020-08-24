@@ -1,0 +1,20 @@
+
+first web app service with html
+mkdir demoHTML
+cd demoHTML
+git clone https://github.com/azure-samples/html-docs-hello-world.git
+cd html-docs-hello-world
+az webapp up --location eastus --name mywebappgouri --html
+
+web app service with php 
+gitrepo=https://github.com/Azure-Samples/php-docs-hello-world
+echo $gitrepo
+webappname=mywebapp$RANDOM
+rgname=<resource group name>
+az group create --location EastUS --name $rgname
+az appservice plan create --name $webappname --resource-group $rgname --sku free
+az webapp create --name $webappname --resource-group $rgname --plan $webappname
+az webapp deployment source config --name $webappname --resource-group $rgname --repo-url $gitrepo --branch master --manual-integration 
+
+
+
